@@ -1,6 +1,6 @@
 <?php
 
-namespace Becklyn\SecurityBundle\Mitigation\Breach;
+namespace Becklyn\SecurityBundle\Html;
 
 
 use Psr\Log\LoggerInterface;

@@ -4,5 +4,5 @@ services:
         autoconfigure: true
 
 
+    Becklyn\SecurityBundle\Html\HtmlNonceInjector: ~
     Becklyn\SecurityBundle\Mitigation\Breach\BreachResponseListener: ~
-    Becklyn\SecurityBundle\Mitigation\Breach\HtmlNonceInjector: ~
