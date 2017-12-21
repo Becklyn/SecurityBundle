@@ -3,4 +3,6 @@ services:
         autowire: true
         autoconfigure: true
 
-    Becklyn\SecurityBundle\EventListener\BreachPreventionResponseSubscriber: ~
+
+    Becklyn\SecurityBundle\Mitigation\Breach\BreachResponseListener: ~
+    Becklyn\SecurityBundle\Mitigation\Breach\HtmlNonceInjector: ~
