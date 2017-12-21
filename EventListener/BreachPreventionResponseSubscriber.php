@@ -39,7 +39,7 @@ class BreachPreventionResponseSubscriber implements EventSubscriberInterface
      */
     public function onResponse (FilterResponseEvent $event)
     {
-        if (!$event->isMasterRequest())
+        if (!$event->isMasterRequest() || !$event->getRequest()->isSecure())
         {
             return;
         }
