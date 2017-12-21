@@ -15,7 +15,8 @@
         "php": "^7.0",
         "symfony/config": "^3.3|^4.0",
         "symfony/dependency-injection": "^3.3|^4.0",
-        "symfony/http-kernel": "^3.3|^4.0"
+        "symfony/http-kernel": "^3.3|^4.0",
+        "symfony/monolog-bundle": "^3.1"
     },
     "config": {
         "sort-packages": true
