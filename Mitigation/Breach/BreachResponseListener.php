@@ -2,9 +2,8 @@
 
 namespace Becklyn\SecurityBundle\Mitigation\Breach;
 
-use Psr\Log\LoggerInterface;
+use Becklyn\SecurityBundle\Html\HtmlNonceInjector;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
