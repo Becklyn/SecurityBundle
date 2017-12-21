@@ -1,0 +1,21 @@
+{
+    "name":         "becklyn/security-bundle",
+    "description":  "Security related helpers for symfony apps.",
+    "type":         "symfony-bundle",
+    "homepage":     "https://github.com/Becklyn/SecurityBundle.git",
+    "license":      "BSD-3-Clause",
+    "authors": [{
+        "name":     "Becklyn Studios",
+        "homepage": "http://becklyn.com/"
+    }],
+    "autoload": {
+        "psr-4": { "Becklyn\\SecurityBundle\\": "" }
+    },
+    "require": {
+        "php": "^7.0",
+        "symfony/http-kernel": "^3.3|^4.0"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
