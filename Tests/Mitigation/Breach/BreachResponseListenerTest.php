@@ -1,15 +1,13 @@
 <?php
 
-namespace Becklyn\SecurityBundle\Tests\Mitigation\Breach;
+namespace Tests\Becklyn\SecurityBundle\Tests\Mitigation\Breach;
 
 use Becklyn\SecurityBundle\Html\HtmlNonceInjector;
 use Becklyn\SecurityBundle\Mitigation\Breach\BreachResponseListener;
 use PHPUnit\Framework\TestCase;
-use Psr\Log\NullLogger;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 
 class BreachResponseListenerTest extends TestCase

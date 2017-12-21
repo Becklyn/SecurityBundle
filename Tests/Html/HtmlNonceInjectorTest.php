@@ -1,6 +1,6 @@
 <?php
 
-namespace Becklyn\SecurityBundle\Tests\Html;
+namespace Tests\Becklyn\SecurityBundle\Tests\Html;
 
 use Becklyn\SecurityBundle\Html\HtmlNonceInjector;
 use PHPUnit\Framework\TestCase;
