@@ -36,7 +36,7 @@ class BreachResponseListener implements EventSubscriberInterface
     /**
      * @param FilterResponseEvent $event
      */
-    public function onResponse (FilterResponseEvent $event)
+    public function onResponse (FilterResponseEvent $event) : void
     {
         if (!$event->isMasterRequest() || !$event->getRequest()->isSecure())
         {

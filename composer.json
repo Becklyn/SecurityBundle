@@ -8,14 +8,8 @@
         "name":     "Becklyn Studios",
         "homepage": "http://becklyn.com/"
     }],
-    "autoload": {
-        "psr-4": { "Becklyn\\SecurityBundle\\": "" }
-    },
-    "autoload-dev": {
-        "psr-4": { "Tests\\Becklyn\\SecurityBundle\\": "Tests/" }
-    },
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "symfony/config": "^3.3|^4.0",
         "symfony/dependency-injection": "^3.3|^4.0",
         "symfony/http-kernel": "^3.3|^4.0",
@@ -24,6 +18,12 @@
     "require-dev": {
         "symfony/phpunit-bridge": "^3.3|^4.0",
         "phpunit/phpunit": "^6.5"
+    },
+    "autoload": {
+        "psr-4": { "Becklyn\\SecurityBundle\\": "" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Tests\\Becklyn\\SecurityBundle\\": "Tests/" }
     },
     "config": {
         "sort-packages": true
