@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Becklyn\SecurityBundle\Mitigation\Breach;
 
@@ -8,9 +8,8 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-
 
 /**
  * Tries to mitigate the BREACH SSL + deflate attack.
@@ -29,7 +28,6 @@ class BreachResponseListener implements EventSubscriberInterface
 
 
     /**
-     * @param HtmlNonceInjector $nonceInjector
      */
     public function __construct (HtmlNonceInjector $nonceInjector)
     {
@@ -38,9 +36,8 @@ class BreachResponseListener implements EventSubscriberInterface
 
 
     /**
-     * @param FilterResponseEvent $event
      */
-    public function onResponse (FilterResponseEvent $event) : void
+    public function onResponse (ResponseEvent $event) : void
     {
         if (!$event->isMasterRequest() || !$event->getRequest()->isSecure())
         {

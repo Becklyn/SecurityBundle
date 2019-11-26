@@ -4,11 +4,13 @@ namespace Tests\Becklyn\SecurityBundle\Tests\Mitigation\Breach;
 
 use Becklyn\SecurityBundle\Html\HtmlNonceInjector;
 use Becklyn\SecurityBundle\Mitigation\Breach\BreachResponseListener;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
-
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 class BreachResponseListenerTest extends TestCase
 {
@@ -22,13 +24,15 @@ class BreachResponseListenerTest extends TestCase
      */
     private function buildServices (HtmlNonceInjector $nonceInjector, bool $isMasterRequest, bool $isSecure) : array
     {
-        $event = $this->getMockBuilder(FilterResponseEvent::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $response = $this->createMock(Response::class);
+        $request = $this->createMock(Request::class);
 
-        $request = $this->getMockBuilder(Request::class)
-            ->disableOriginalConstructor()
-            ->getMock();
+        $event = new ResponseEvent(
+            $this->createMock(KernelInterface::class),
+            $request,
+            $isMasterRequest ? HttpKernelInterface::MASTER_REQUEST : HttpKernelInterface::SUB_REQUEST,
+            $response
+        );
 
         if ($isMasterRequest)
         {
@@ -37,23 +41,6 @@ class BreachResponseListenerTest extends TestCase
                 ->method("isSecure")
                 ->willReturn($isSecure);
         }
-
-        $response = $this->getMockBuilder(Response::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $event
-            ->expects(self::once())
-            ->method("isMasterRequest")
-            ->willReturn($isMasterRequest);
-
-        $event
-            ->method("getRequest")
-            ->willReturn($request);
-
-        $event
-            ->method("getResponse")
-            ->willReturn($response);
 
         return [
             new BreachResponseListener($nonceInjector),
@@ -115,14 +102,13 @@ class BreachResponseListenerTest extends TestCase
 
         /**
          * @type BreachResponseListener $listener
-         * @type \PHPUnit_Framework_MockObject_MockObject $event
-         * @type \PHPUnit_Framework_MockObject_MockObject $response
+         * @type ResponseEvent $event
+         * @type MockObject $response
          */
         [$listener, $event, $response] = $this->buildServices($nonceInjector, true, true);
 
         $rawHtml = '<html>content</html>';
         $injectedHtml = '<html>content<!-- injected --></html>';
-
 
         $nonceInjector
             ->expects(self::once())
