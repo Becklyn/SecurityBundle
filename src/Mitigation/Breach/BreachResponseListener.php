@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Becklyn\SecurityBundle\Mitigation\Breach;
 
@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
-
 
 /**
  * Tries to mitigate the BREACH SSL + deflate attack.
@@ -29,7 +28,6 @@ class BreachResponseListener implements EventSubscriberInterface
 
 
     /**
-     * @param HtmlNonceInjector $nonceInjector
      */
     public function __construct (HtmlNonceInjector $nonceInjector)
     {
