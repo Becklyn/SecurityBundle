@@ -21,25 +21,18 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class BreachResponseListener implements EventSubscriberInterface
 {
-    /**
-     * @var HtmlNonceInjector
-     */
-    private $nonceInjector;
+    private HtmlNonceInjector $nonceInjector;
 
 
-    /**
-     */
     public function __construct (HtmlNonceInjector $nonceInjector)
     {
         $this->nonceInjector = $nonceInjector;
     }
 
 
-    /**
-     */
     public function onResponse (ResponseEvent $event) : void
     {
-        if (!$event->isMasterRequest() || !$event->getRequest()->isSecure())
+        if (!$event->isMainRequest() || !$event->getRequest()->isSecure())
         {
             return;
         }
@@ -67,7 +60,7 @@ class BreachResponseListener implements EventSubscriberInterface
     /**
      * @inheritdoc
      */
-    public static function getSubscribedEvents ()
+    public static function getSubscribedEvents () : array
     {
         return [
             KernelEvents::RESPONSE => "onResponse",

@@ -1,27 +1,24 @@
 {
     "name": "becklyn/security-bundle",
-    "type": "symfony-bundle",
     "description": "Security related helpers for symfony apps.",
-    "homepage": "https://github.com/Becklyn/SecurityBundle.git",
     "license": "BSD-3-Clause",
+    "type": "symfony-bundle",
     "authors": [
         {
             "name": "Becklyn Studios",
             "homepage": "http://becklyn.com/"
         }
     ],
+    "homepage": "https://github.com/Becklyn/SecurityBundle.git",
     "require": {
-        "php": "^7.3",
-        "symfony/config": "^5.0",
-        "symfony/dependency-injection": "^5.0",
-        "symfony/http-kernel": "^5.0"
+        "php": ">=7.4",
+        "symfony/config": "^v5.4.3 || ^v6.0.3",
+        "symfony/dependency-injection": "^v5.4.3 || ^v6.0.3",
+        "symfony/http-kernel": "^v5.4.3 || ^v6.0.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "symfony/phpunit-bridge": "^5.0"
-    },
-    "config": {
-        "sort-packages": true
+        "symfony/phpunit-bridge": "^v5.4.3 || ^v6.0.3"
     },
     "autoload": {
         "psr-4": {
@@ -32,5 +29,8 @@
         "psr-4": {
             "Tests\\Becklyn\\SecurityBundle\\": "Tests/"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
