@@ -32,7 +32,7 @@ class BreachResponseListener implements EventSubscriberInterface
 
     public function onResponse (ResponseEvent $event) : void
     {
-        if (!$event->isMainRequest() || !$event->getRequest()->isSecure())
+        if (!$event->isMasterRequest() || !$event->getRequest()->isSecure())
         {
             return;
         }
